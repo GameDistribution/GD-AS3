@@ -55,7 +55,8 @@ package gdapi
 						                ds.async = true;
 						                ds.src = source;
        								 m.parentNode.insertBefore(ds, m)						
-								 })
+								 	})
+								})
 							]]>						
 						</script>;		
 					

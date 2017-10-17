@@ -22,7 +22,6 @@ package gdapi
 	import flash.ui.Mouse;
 	import flash.utils.Timer;
 	import flash.utils.getQualifiedClassName;
-
 	internal final class GDBanner extends EventDispatcher
 	{
 		private static var BannerServerURL:String = "bn.submityourgame.com";
@@ -438,36 +437,40 @@ package gdapi
 							if (!_EnableBanner) {
 								dispatchEvent(new Event(GDEvent.BANNER_CLOSED));
 							}
-							
-							//getting ads from html
-							GDUtils.RegisterJSCallBackFunction("jsGDO",jsGDO);
-							GDUtils.RegisterJSCallBackFunction("jsPauseGame",jsPauseGame);
-							GDUtils.RegisterJSCallBackFunction("jsResumeGame",jsResumeGame);				
-							GDUtils.RegisterJSCallBackFunction("jsOnAdsStarted",jsOnAdsStarted);				
-							GDUtils.RegisterJSCallBackFunction("jsOnAdsClosed",jsOnAdsClosed);				
-							GDUtils.RegisterJSCallBackFunction("jsOnAdsError",jsOnAdsError);				
-							GDUtils.RegisterJSCallBackFunction("jsOnAdsReady",jsOnAdsReady);
-							GDUtils.RegisterJSCallBackFunction("jsOnAdsLoaded",jsOnAdsLoaded);
-							jsInjectGD();
-							
-							if (isPreRoll) {
+							else{
 								
-								var minuteTimer:Timer = new Timer(120*1000,1); // 2min delay 
-								minuteTimer.addEventListener(TimerEvent.TIMER_COMPLETE, function(event:TimerEvent):void {	
-									GDUtils.CallJSFunction("jsShowBanner");	
-									_GDAnalytics.jsSendEventGoogle("Ad","Requested Preroll");												
-								}); 		
-								minuteTimer.start(); 						
+			
+								//getting ads from html
+								GDUtils.RegisterJSCallBackFunction("jsGDO",jsGDO);
+								GDUtils.RegisterJSCallBackFunction("jsPauseGame",jsPauseGame);
+								GDUtils.RegisterJSCallBackFunction("jsResumeGame",jsResumeGame);				
+								GDUtils.RegisterJSCallBackFunction("jsOnAdsStarted",jsOnAdsStarted);				
+								GDUtils.RegisterJSCallBackFunction("jsOnAdsClosed",jsOnAdsClosed);				
+								GDUtils.RegisterJSCallBackFunction("jsOnAdsError",jsOnAdsError);				
+								GDUtils.RegisterJSCallBackFunction("jsOnAdsReady",jsOnAdsReady);
+								GDUtils.RegisterJSCallBackFunction("jsOnAdsLoaded",jsOnAdsLoaded);
+								jsInjectGD();
 								
-							}	
-							else{										
-								if(_MidRoll){								
-									GDUtils.CallJSFunction("jsShowBanner");	
-									_GDAnalytics.jsSendEventGoogle("Ad","Requested Midroll");
-									_MidRoll = false;
-								}							
+								if (isPreRoll) {								
+									var minuteTimer:Timer = new Timer(120*1000,1); // 2min delay 
+									minuteTimer.addEventListener(TimerEvent.TIMER_COMPLETE, function(event:TimerEvent):void {	
+										GDUtils.CallJSFunction("jsShowBanner");	
+										_GDAnalytics.jsSendEventGoogle("Ad","Requested Preroll");												
+									}); 		
+									minuteTimer.start(); 						
+									
+								}	
+								else{										
+									if(_MidRoll){								
+										GDUtils.CallJSFunction("jsShowBanner");	
+										_GDAnalytics.jsSendEventGoogle("Ad","Requested Midroll");
+										_MidRoll = false;
+									}							
+								}
+								
+								
 							}
-							
+						
 													
 							// getting ads from flash	
 							/*
@@ -556,7 +559,7 @@ package gdapi
 			{
 				var today:Date = new Date();		
 				try
-				{					
+				{		
 					var script_js:XML =						
 						<script>
 						<![CDATA[

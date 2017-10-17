@@ -30,7 +30,7 @@ package gdapi
 		internal static var _Enabled:Boolean = true;
 		internal static var _WebRef:String = "";
 		internal static var _isLocal:Boolean=false;
-		internal static var _ApiVersion:String = "v232";
+		internal static var _ApiVersion:String = "v233";
 		internal static var _ServerVersion:String = "v1";
 		internal static var _Stage:Stage;
 		
