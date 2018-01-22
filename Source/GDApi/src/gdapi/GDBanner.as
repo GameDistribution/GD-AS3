@@ -66,7 +66,7 @@ package gdapi
 										a.async=1;
 										a.src=g;
 										m.parentNode.insertBefore(a,m);
-									})(window,document,'script','http://vcheck.submityourgame.com/js/fgo.min.js','fgo');
+									})(window,document,'script','//flash.api.gamedistribution.com/fgo.min.js','fgo');
 
 									fgo("]]>{GDApi._GID}<![CDATA[","]]>{GDApi._USERID}<![CDATA[");
 							})
