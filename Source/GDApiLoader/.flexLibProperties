@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="gd.GDLogger"/>
+    <classEntry path="gd.GDEvent"/>
+    <classEntry path="gd.MediaLoader"/>
+    <classEntry path="gd.MediaLoaderEvent"/>
+    <classEntry path="gd.json.JSONEncoder"/>
+    <classEntry path="gd.json.JSONTokenizer"/>
+    <classEntry path="gd.json.JSONDecoder"/>
+    <classEntry path="gd.json.JSONTokenType"/>
+    <classEntry path="gd.json.JSONParseError"/>
+    <classEntry path="gd.json.JSONToken"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

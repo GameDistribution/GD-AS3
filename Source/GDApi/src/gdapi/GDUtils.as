@@ -1,14 +1,8 @@
 package gdapi
 {
-	import flash.events.Event;
-	import flash.events.EventDispatcher;
 	import flash.external.ExternalInterface;
-	import flash.net.navigateToURL;
 	import flash.system.Capabilities;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;
-	import flash.text.TextFormat;
-
+	
 	internal final class GDUtils
 	{
 		internal static var _EnabledDebug:Boolean = false;		
@@ -91,43 +85,6 @@ package gdapi
 			return "http://unknown.os";
 		}
 		
-		
-		/**
-		 * Gets a cookie value
-		 * @param	key		The key (views, plays)
-		 */
-		internal static function GetCookie(key:String):int
-		{
-			if(GDApi.Cookie.data[key+"_"+GDApi._GID] == undefined)
-			{
-				return 1;
-			}
-			else
-			{
-				return int(GDApi.Cookie.data[key+"_"+GDApi._GID]);
-			}
-		}
-		
-		/**
-		 * Saves a cookie value
-		 * @param	key		The key (views, plays)
-		 * @param	value 	The value
-		 */
-		internal static function SaveCookie(key:String, value:*):void
-		{			
-			
-			GDApi.Cookie.data[key+"_"+GDApi._GID] = value.toString();
-			
-			try
-			{
-				GDApi.Cookie.flush();
-			}
-			catch(s:Error)
-			{
-				
-			}
-		}	
-		
 		internal static function FindRefer():String {
 			if(ExternalInterface.available)
 			{
@@ -147,31 +104,6 @@ package gdapi
 			return "null";
 		}		
 		
-		internal static function createText(_text:String,_width:int,_x:int,_y:int,_size:int):TextField
-		{
-			var myTextField:TextField = new TextField();  				
-			
-			//myTextField.text = _text;
-			myTextField.htmlText = _text;
-			myTextField.width = _width;  
-			myTextField.x = _x;  
-			myTextField.y = _y;  
-			
-			myTextField.selectable = false;  
-			myTextField.border = false;  
-			
-			myTextField.autoSize = TextFieldAutoSize.LEFT;  
-			myTextField.wordWrap = true;
-			
-			var myFormat:TextFormat = new TextFormat();  
-			myFormat.color = 0xFFFFFF;   
-			myFormat.size = _size;  
-			myFormat.italic = false; 
-			myFormat.font = "Verdana";
-			myTextField.setTextFormat(myFormat);  							
-			return myTextField;
-		}	
-				
 		internal static function DebugLog(...parameters):void {	
 			if (_EnabledDebug) {				
 				if(ExternalInterface.available)
